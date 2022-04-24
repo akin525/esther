@@ -40,7 +40,7 @@
                     <div class="auth-cover-img overlay-wrap" style="background-image:url(dist/img/bg1.jpg);">
                         <div class="auth-cover-info py-xl-0 pt-100 pb-50">
                             <div class="auth-cover-content w-xxl-75 w-sm-90 w-100">
-                                <h1 class="display-3 text-white mb-20">Enjoy unlimited beautiful display content area</h1>
+{{--                                <h1 class="display-3 text-white mb-20">Enjoy unlimited beautiful display content area</h1>--}}
 {{--                                <p class="text-white">The passage experienced a surge in popularity during the 1960s when Letraset used it on their dry-transfer sheets, and again during the 90s as desktop publishers bundled the text with their software.</p>--}}
                                 <div class="play-wrap">
                                     <a class="play-btn" href="#"></a>

@@ -5,11 +5,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>{{Auth::user()->name}} Dashboard</title>
-    <meta name="description" content="A responsive bootstrap 4 admin dashboard template by hencework" />
+    <meta name="description" content="Buy Data || Buy Airtime $ ALl Bill Payment" />
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{url('https://app.borismobilemoney.com.ng/pk.png')}}">
-    <link rel="icon" href="{{url('https://app.borismobilemoney.com.ng/pk.png')}}" type="image/x-icon">
+    <link rel="shortcut icon" href="https://app.borismobilemoney.com.ng/pk.png">
+    <link rel="icon" href="https://app.borismobilemoney.com.ng/pk.png" type="image/x-icon">
 
     <!-- vector map CSS -->
     <link href="{{asset('vendors4/vectormap/jquery-jvectormap-2.0.3.css')}}" rel="stylesheet" type="text/css" />

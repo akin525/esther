@@ -7,8 +7,8 @@
     <meta name="description" content="Buy Data || Buy Airtime $ ALl Bill Payment" />
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{url('https://app.borismobilemoney.com.ng/pk.png')}}">
-    <link rel="icon" href="{{url('https://app.borismobilemoney.com.ng/pk.png')}}" type="image/x-icon">
+    <link rel="shortcut icon" href="https://app.borismobilemoney.com.ng/pk.png">
+    <link rel="icon" href="https://app.borismobilemoney.com.ng/pk.png" type="image/x-icon">
 
     <!-- Custom CSS -->
     <link href="{{asset('dist/css/style.css')}}" rel="stylesheet" type="text/css">
@@ -52,7 +52,7 @@
                             <div class="auth-cover-info py-xl-0 pt-100 pb-50">
                                 <div class="auth-cover-content text-center w-xxl-75 w-sm-90 w-xs-100">
                                     <h1 class="display-3 text-white mb-20">Boris Mobile Money</h1>
-                                    <p class="text-white">The passage experienced a surge in popularity during the 1960s when Letraset used it on their dry-transfer sheets, and again during the 90s as desktop publishers bundled the text with their software.</p>
+{{--                                    <p class="text-white">The passage experienced a surge in popularity during the 1960s when Letraset used it on their dry-transfer sheets, and again during the 90s as desktop publishers bundled the text with their software.</p>--}}
                                 </div>
                             </div>
                             <div class="bg-overlay bg-trans-dark-50"></div>
@@ -106,9 +106,9 @@
                     {{ __('Log in') }}
                 </x-jet-button>
                 @if (Route::has('password.request'))
-                    <p class="font-14 text-center mt-15" href="{{ route('password.request') }}">
+                    <a class="font-14 text-center mt-15" href="{{ route('password.request') }}">
                         {{ __('Forgot your password?') }}
-                    </p>
+                    </a>
                 @endif
                 <div class="option-sep">or</div>
                 <div class="form-row">
