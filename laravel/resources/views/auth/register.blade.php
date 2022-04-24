@@ -4,11 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Boris-Register</title>
-    <meta name="description" content="A responsive bootstrap 4 admin dashboard template by hencework" />
+    <meta name="description" content="Buy Data || Buy Airtime $ ALl Bill Payment" />
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{asset('pk.png')}}">
-    <link rel="icon" href="{{asset('pk.png')}}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{url('https://app.borismobilemoney.com.ng/pk.png')}}">
+    <link rel="icon" href="{{url('https://app.borismobilemoney.com.ng/pk.png')}}" type="image/x-icon">
 
     <!-- Custom CSS -->
     <link href="{{asset('dist/css/style.css')}}" rel="stylesheet" type="text/css">
@@ -41,7 +41,7 @@
                         <div class="auth-cover-info py-xl-0 pt-100 pb-50">
                             <div class="auth-cover-content w-xxl-75 w-sm-90 w-100">
                                 <h1 class="display-3 text-white mb-20">Enjoy unlimited beautiful display content area</h1>
-                                <p class="text-white">The passage experienced a surge in popularity during the 1960s when Letraset used it on their dry-transfer sheets, and again during the 90s as desktop publishers bundled the text with their software.</p>
+{{--                                <p class="text-white">The passage experienced a surge in popularity during the 1960s when Letraset used it on their dry-transfer sheets, and again during the 90s as desktop publishers bundled the text with their software.</p>--}}
                                 <div class="play-wrap">
                                     <a class="play-btn" href="#"></a>
                                     <span>How it works ?</span>

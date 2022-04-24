@@ -8,8 +8,8 @@
     <meta name="description" content="A responsive bootstrap 4 admin dashboard template by hencework" />
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{asset('pk.png')}}">
-    <link rel="icon" href="{{asset('pk.png')}}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{url('https://app.borismobilemoney.com.ng/pk.png')}}">
+    <link rel="icon" href="{{url('https://app.borismobilemoney.com.ng/pk.png')}}" type="image/x-icon">
 
     <!-- vector map CSS -->
     <link href="{{asset('vendors4/vectormap/jquery-jvectormap-2.0.3.css')}}" rel="stylesheet" type="text/css" />
