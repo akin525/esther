@@ -140,6 +140,12 @@
                             <span class="nav-link-text">Buy Data</span>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('selecttv')}}"  data-target="#auth_drp">
+                            <i class="fa fa-television"></i>
+                            <span class="nav-link-text">Pay Tv</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>

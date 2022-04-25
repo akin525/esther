@@ -62,9 +62,9 @@ class TvController
     public function verifytv(Request $request)
     {
 //        return $request;
-        $ve=product1::where('product_type', $request->network)->first();
+        $ve=product1::where('product_type1', $request->network)->first();
 //        return $request;
-        $pla=product1::where('product_type',  $request->network)->get();
+        $pla=product1::where('product_type1',  $request->network)->get();
 //return $ve;
         $resellerURL = 'https://app.mcd.5starcompany.com.ng/api/reseller/';
 
@@ -75,7 +75,7 @@ class TvController
 
         curl_setopt_array($curl, array(
 
-            CURLOPT_URL => $resellerURL.'verifytv',
+            CURLOPT_URL => $resellerURL.'validate',
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
@@ -85,7 +85,7 @@ class TvController
             CURLOPT_SSL_VERIFYHOST => 0,
             CURLOPT_SSL_VERIFYPEER => 0,
             CURLOPT_CUSTOMREQUEST => 'POST',
-            CURLOPT_POSTFIELDS => array('service' => 'tv','coded' => $ve->product_type,'phone' => $request->phone),
+            CURLOPT_POSTFIELDS => array('service' => 'tv','coded' => $ve->product_type1,'phone' => $request->phone),
             CURLOPT_HTTPHEADER => array(
                 'Authorization: MCDKEY_903sfjfi0ad833mk8537dhc03kbs120r0h9a'
             )));
@@ -95,7 +95,7 @@ class TvController
 //        echo $response;
 //return $response;
         $data = json_decode($response, true);
-        $success= $data["message"];
+        $success= $data["details"]['Customer_Name'];
         if ($success){
             $log=$success;
         }else{
@@ -105,18 +105,18 @@ class TvController
 
 
     }
-//    public function process(Request $request)
-//    {
-//        if (Auth::check()) {
-//            $user = User::find($request->user()->id);
-//            $tv = data::where('id', $request->id)->first();
-//
-//            return  view('tvp', compact('user', 'request'));
-//
-//        }
-//        return redirect("login")->withSuccess('You are not allowed to access');
-//
-//    }
+    public function process(Request $request)
+    {
+        if (Auth::check()) {
+            $user = User::find($request->user()->id);
+            $tv = data::where('id', $request->id)->first();
+
+            return  view('selecttv', compact('user', 'request'));
+
+        }
+        return redirect("login")->withSuccess('You are not allowed to access');
+
+    }
     public function tv(Request $request)
     {
         if (Auth::check()) {
@@ -132,16 +132,16 @@ class TvController
     {
         if (Auth::check()) {
             $user = User::find($request->user()->id);
-            $tv = data::where('id', $request->id)->first();
+            $tv = product1::where('id', $request->pid)->first();
 
 //return $tv;
-            if ($user->wallet < $tv->tamount) {
-                $mg = "You Cant Make Purchase Above" . "NGN" . $tv->tamount . " from your wallet. Your wallet balance is NGN $user->wallet. Please Fund Wallet And Retry or Pay Online Using Our Alternative Payment Methods.";
+            if ($user->wallet < $tv->amount) {
+                $mg = "You Cant Make Purchase Above" . "NGN" . $tv->amount . " from your wallet. Your wallet balance is NGN $user->wallet. Please Fund Wallet And Retry or Pay Online Using Our Alternative Payment Methods.";
 
                 return view('bill', compact('user', 'mg'));
 
             }
-            if ($tv->tamount < 0) {
+            if ($tv->amount < 0) {
 
                 $mg = "error transaction";
                 return view('bill', compact('user', 'mg'));
@@ -164,7 +164,7 @@ class TvController
                 $curl = curl_init();
 
                 curl_setopt_array($curl, array(
-                    CURLOPT_URL => $resellerURL.'paytv',
+                    CURLOPT_URL => 'https://test.mcd.5starcompany.com.ng/api/reseller/pay',
                     CURLOPT_RETURNTRANSFER => true,
                     CURLOPT_ENCODING => '',
                     CURLOPT_MAXREDIRS => 10,
@@ -172,9 +172,10 @@ class TvController
                     CURLOPT_FOLLOWLOCATION => true,
                     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
                     CURLOPT_CUSTOMREQUEST => 'POST',
-                    CURLOPT_POSTFIELDS => array('refid' =>$request->refid,  'coded' => $tv->cat_id, 'number' => $request->number),
+                    CURLOPT_POSTFIELDS => array('service' => 'tv','coded' => $tv->networkcode,'phone' => $request->number),
                     CURLOPT_HTTPHEADER => array(
-                        'apikey: PRIME6251e00adbc770.70038796'
+                        'Authorization: MCDKEY_903sfjfi0ad833mk8537dhc03kbs120r0h9a'
+
                     )
                 ));
 
@@ -184,16 +185,16 @@ class TvController
 //                    echo $response;
 //                return $response;
                 $data = json_decode($response, true);
-//                $success = $data["am"];
+                $success = $data["success"];
 //                $tran1 = $data["discountAmount"];
 
 //                        return $response;
-                if (isset($data['am'])) {
+                if ($data['success']==1) {
 
                     $bo = bo::create([
                         'username' => $user->username,
-                        'plan' => $tv->network,
-                        'amount' => $tv->tamount,
+                        'plan' => $tv->details,
+                        'amount' => $tv->amount,
                         'server_res' => $response,
                         'result' => 1,
                         'phone' => $request->number,
@@ -201,8 +202,8 @@ class TvController
                     ]);
 
                     $success=1;
-                    $name = $tv->plan;
-                    $am = $tv->network."was Successful to";
+                    $name = $tv->product_type1;
+                    $am = $tv->details."was Successful to";
                     $ph = $request->number;
 
 
@@ -214,11 +215,11 @@ class TvController
                 }else{
                     $success=0;
 
-                    $zo=$user->wallet+$tv->tamount;
+                    $zo=$user->wallet+$tv->amount;
                     $user->wallet = $zo;
                     $user->save();
 
-                    $name= $tv->network;
+                    $name= $tv->product_type1;
                     $am= "NGN $request->amount Was Refunded To Your Wallet";
                     $ph=", Transaction fail";
 
