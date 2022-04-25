@@ -38,6 +38,7 @@ Route::post('verifye', [EleController::class, 'verifyelect'])->name('verifye');
 Route::get('elect', [EleController::class, 'electric'])->name('elect');
 Route::post('pre', [AuthController::class, 'pre'])->name('pre');
 Route::post('bill', [Authcontroller::class, 'airtime'])->name('bill');
+Route::get('allbill', [Authcontroller::class, 'bill'])->name('allbill');
 Route::post('data', [bydata::class, 'data'])->name('data');
 Route::get('fund', [FundController::class, 'fund'])->name('fund');
 Route::get('tran/{reference}', [FundController::class, 'tran'])->name('tran');

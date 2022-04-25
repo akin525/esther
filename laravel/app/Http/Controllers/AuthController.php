@@ -38,6 +38,22 @@ class AuthController
         return redirect("login")->withSuccess('You are not allowed to access');
 
     }
+    public function bill(Request $request)
+    {
+        if (Auth::check()) {
+            $user = User::find($request->user()->id);
+
+            $bil2 = bo::where('username', $request->user()->username)->get();
+            $bill = 0;
+            foreach ($bil2 as $bill1){
+                $bill += $bill1->amount;
+
+            }
+            return  view('allbill', compact('user',  'bill', 'bil2'));
+        }
+        return redirect("login")->withSuccess('You are not allowed to access');
+
+    }
     public function select(Request  $request)
     {
         if(Auth::check()){

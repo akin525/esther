@@ -152,6 +152,12 @@
                             <span class="nav-link-text">Pay Electricity</span>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('allbill')}}"  data-target="#auth_drp">
+                            <i class="fa fa-bars"></i>
+                            <span class="nav-link-text">Transaction</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
