@@ -3,6 +3,7 @@
 use App\Http\Controllers\AirtimeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\bydata;
+use App\Http\Controllers\EleController;
 use App\Http\Controllers\FundController;
 use App\Http\Controllers\TvController;
 use Illuminate\Support\Facades\Route;
@@ -32,6 +33,9 @@ Route::get('tv', [TvController::class, 'tv'])->name('tv');
 Route::get('selecttv', [TvController::class, 'process'])->name('selecttv');
 Route::post('tvp', [TvController::class, 'paytv'])->name('tvp');
 Route::post('verifytv', [TvController::class, 'verifytv'])->name('verifytv');
+Route::post('payelect', [EleController::class, 'payelect'])->name('payelect');
+Route::post('verifye', [EleController::class, 'verifyelect'])->name('verifye');
+Route::get('elect', [EleController::class, 'electric'])->name('elect');
 Route::post('pre', [AuthController::class, 'pre'])->name('pre');
 Route::post('bill', [Authcontroller::class, 'airtime'])->name('bill');
 Route::post('data', [bydata::class, 'data'])->name('data');

@@ -146,6 +146,12 @@
                             <span class="nav-link-text">Pay Tv</span>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('elect')}}"  data-target="#auth_drp">
+                            <i class="fa fa-lightbulb-o"></i>
+                            <span class="nav-link-text">Pay Electricity</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
