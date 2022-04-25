@@ -16,7 +16,8 @@
                                 <th>Transacion Id</th>
                                 <th>Product</th>
                                 <th>Amount</th>
-                                <th>Numberr</th>
+                                <th>Number</th>
+                                <th>Token</th>
                                 <th>Date</th>
                             </tr>
                             </thead>
@@ -29,6 +30,7 @@
                                     <td>{{$da->amount}}</td>
                                     <td>{{$da->plan}}</td>
                                     <td>{{$da->phone}}</td>
+                                    <td>{{$da->token}}</td>
                                     <td>{{$da->date}}</td>
                                 </tr>
                             @endforeach
